@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+
+<body>
+<canvas id="myCanvas" width="500px" height="500px"></canvas>
+<script type="text/javascript">
+//rgba(255,0,0,0.25)
+
+function draw21(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+
+	var context = canvas.getContext("2d");
+
+	context.fillRect(0,0,100,100);
+	context.strokeRect(120,0,100,100);
+
+	context.fillStyle = "red";
+	context.strokeStyle = "blue";
+
+	context.fillRect(0,120,100,100);
+	context.strokeRect(120,120,100,100);
+
+	context.fillStyle = "rgba(0,0,250,0.25)";
+	context.strokeStyle = "rgba(0,0,250,0.25)";
+
+	context.fillRect(240,0,100,100);
+	context.strokeRect(240,120,100,100);
+
+	context.clearRect(50,50,240,120);
+}
+// draw21("myCanvas");
+
+function draw0(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+
+	var context = canvas.getContext("2d");
+	context.beginPath();
+	context.arc(200,150,100,0,Math.PI*2, true);
+
+	context.closePath();
+	context.fillStyle = "rgba(0,255,0,0.25)";
+	context.fill();
+}
+//draw0("myCanvas");
+
+function draw23(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+	var n = 0;
+
+	context.beginPath();
+	context.arc(100,150,50,0,Math.PI/2,false);
+	context.fillStyle = "rgba(255,0,0,0.25)";
+	context.fill();
+	context.strokeStyle = "rgba(255,0,0,0.25)";
+	context.closePath();
+	context.stroke();
+
+	context.beginPath();
+	context.arc(300,150,50,0,Math.PI/2, false);
+	context.fillStyle = "rgba(255,0,0,0.25)";
+	context.fill();
+	context.strokeStyle = "rgba(255,0,0,0.25)";
+	context.closePath();
+	context.stroke();
+}
+// draw23("myCanvas");
+
+function draw8(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	context.strokeStyle = "rgb(255,0,0)";
+	context.fillStyle = "rgb(255,0,0)";
+
+	context.lineTo(100,100);
+	context.lineTo(200,200);
+	context.lineTo(200,100);
+	context.moveTo(200,50);
+	context.lineTo(100,50);
+
+	context.stroke()
+}
+// draw8("myCanvas");
+
+function draw1(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	context.fillStyle = "#EEEEFF";
+	context.fillRect(0,0,400,300);
+
+	var n =0;
+	var dx = 150;
+	var dy = 150;
+	var s = 100;
+	context.beginPath();
+	context.fillStyle = "rgb(100,255,100)";
+	context.strokeStyle = "rgb(0,0,100)";
+
+	var x = Math.sin(0);
+	var y = Math.cos(0);
+	var dig = Math.PI / 15 * 11;
+	for(var i = 0;i<30;i++){
+		var x = Math.sin(i * dig);
+		var y = Math.cos(i * dig);
+		context.lineTo(dx + x * s, dy + y *s);
+	}
+	
+	context.closePath();
+	context.fill();
+	context.stroke();
+}
+// draw1("myCanvas");
+
+function draw24(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	context.moveTo(50,50);
+	context.bezierCurveTo(50,50,150,50,150,150);
+	context.stroke();
+	context.quadraticCurveTo(150,250,250,250);
+	context.stroke();
+}
+// draw24("myCanvas");
+
+function draw2(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+	context.fillStyle = "#EEEEFF";
+	context.fillRect(0,0,400,300);
+
+	var n = 0;
+	var dx = 150;
+	var dy = 150;
+	var s = 100;
+	context.beginPath();
+	context.globalCompositeOperation = "and";
+
+	context.fillStyle = "rgb(100,255,100)";
+
+	var x = Math.sin(0);
+	var y = Math.cos(0);
+	var dig = Math.PI / 15 * 11;
+	context.moveTo(dx, dy);
+	for(var i=0; i < 30; i++){
+		var x = Math.sin(i * dig);
+		var y = Math.cos(i * dig);
+		context.bezierCurveTo(dx + x * s, dy + y * s - 100, dx + x * s + 100, dy + y * s, dx + x * s, dy + y * s);
+	}
+	context.closePath();
+	context.fill();
+	context.stroke();
+}
+// draw2("myCanvas");
+
+function draw25(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	var g1 = context.createLinearGradient(0,0,0,300);
+
+	g1.addColorStop(0,'rgb(255,0,0)');
+	g1.addColorStop(0.5,'rgb(0,255,0)');
+	g1.addColorStop(1,'rgb(0,0,255)');
+
+	context.fillStyle = g1;
+	context.fillRect(0,0,400,300);
+
+}
+// draw25("myCanvas")
+
+function draw26(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	// var g1 = context.createRadialGradient(200,150,0,200,150,100);
+
+	// g1.addColorStop(0.1,"rgb(255,0,0)");
+	// g1.addColorStop(1,"rgb(50,0,0)");
+	// context.fillStyle = g1;
+	// context.beginPath();
+	// context.arc(200,150,100,0,Math.PI*2, true);
+	// context.closePath();
+	// context.fill();
+
+
+	var g1 = context.createRadialGradient(100,150,10,300,150,50);
+	g1.addColorStop(0.1,"rgb(255,0,0)");
+	g1.addColorStop(0.5,"rgb(0,255,0)");
+	g1.addColorStop(1,"rgb(0,0,255)");
+
+	context.fillStyle = g1;
+	context.fillRect(0,0,400,300);
+}
+// draw26("myCanvas");
+
+function draw5(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	context.save();
+	context.fillStyle = "#EEEEFF";
+	context.fillRect(0,0,400,300);
+
+	//平移 旋转 缩放
+	context.fillStyle = "rgba(255,0,0,0.1)";
+	context.translate(100,100);
+	context.rotate(Math.PI/4);
+	context.scale(0.5,0.5);
+	context.fillRect(0,0,100,100);
+
+	//平移 缩放 旋转
+	context.restore();
+	context.save();
+	context.fillStyle = "rgba(255,0,250,0.2)";
+	context.translate(100,100);
+	context.scale(0.5,0.5);
+	context.rotate(Math.PI/4);
+	context.fillRect(0,0,100,100);
+
+	//缩放 平移 旋转
+	context.restore();
+	context.save();
+	context.fillStyle = "rgba(255,0,0,0.3)";
+	context.scale(0.5,0.5);
+	context.translate(100,100);
+	context.rotate(Math.PI/4);
+	context.fillRect(0,0,100,100);
+
+	//缩放 旋转 平移
+	context.restore();
+	context.save();
+	context.fillStyle = "rgba(255,0,0,0.4)";
+	context.scale(0.5,0.5);
+	context.rotate(Math.PI/4);
+	context.translate(100,100);
+	context.fillRect(0,0,100,100);
+
+	//旋转 平移 缩放 
+	context.restore();
+	context.save();
+	context.fillStyle = "rgba(255,0,0,0.5)";
+	context.rotate(Math.PI/4);
+	context.translate(100,100);
+	context.scale(0.5,0.5);
+	context.fillRect(0,0,100,100);
+
+	//旋转 缩放 平移
+	context.restore();
+	context.save();
+	context.fillStyle = "rgba(255,250,0,0.1)";
+	context.rotate(Math.PI/4);
+	context.scale(0.5,0.5);
+	context.translate(100,100);
+	context.fillRect(0,0,100,100);
+}
+// draw5("myCanvas");
+
+function draw10(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+	var op = new Array(
+		"source-over",
+		"destination-over",
+		"source-in",
+		"destination-over",
+		"sourve-out",
+		"destination-out",
+		"sourve-atop",
+		"destination-atop",
+		"lighter",
+		"xor",
+		"copy"
+	);
+
+	var i = 0;
+
+	var interal = setInterval(function() {
+		if(i == 10){
+			i=0;
+		}else{
+			i++;
+		}
+
+		context.fillStyle = "blue";
+		context.fillRect(10,10,60,60);
+
+		context.globalCompositeOperation = op[i];
+
+		context.beginPath();
+		context.fillStyle = "red";
+		context.arc(60,60,30,0,Math.PI*2, false);
+		context.fill();
+		// context.closePath();
+	},3000)
+}
+// draw10("myCanvas");
+
+function draw27(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	context.shadowOffsetX = 10;
+	context.shadowOffsetY = 20;
+	context.shadowColor = "rgb(255,0,0)";
+	context.shadowBlur = 10;
+	context.fillStyle = "rgba(255,0,0,0.5)";
+	context.fillRect(100,100,200,100);
+}
+//draw27("myCanvas");
+
+function draw27(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	context.shadowOffsetX = 10;
+	context.shadowOffsetY = 20;
+	context.shadowColor = "rgb(255,0,0)";
+	context.shadowBlur = 10;
+	context.fillStyle = "rgba(255,0,0,0.5)";
+	context.fillRect(100,100,200,100);
+}
+//draw27("myCanvas");
+
+function createStar(context){
+	var n=0, dx=100, dy=0, s=50;
+	context.beginPath();
+	context.fillStyle = "rgba(255,255,255,1)";
+	var x = Math.sin(0);
+	var y = Math.cos(0);
+	var dig = Math.PI / 5 *4;
+	for(var i =0;i <5;i++){
+		var x = Math.sin(i * dig);
+		var y = Math.cos(i * dig);
+		context.lineTo(dx + x * s, dy + y * s)
+	}
+	context.closePath();
+}
+function draw11(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+
+	context.fillStyle = "red";
+	context.fillRect(0,0,400,300);
+
+	context.shadowOffsetX = 5;
+	context.shadowOffsetY = 5;
+	context.shadowColor = "rgba(0,0,0,1)";
+	context.shadowBlur = 5;
+
+	context.translate(-50,50);
+
+	for(var i=0;i<3;i++){
+		context.translate(50,50);
+		createStar(context);
+		context.fill();
+	}
+}
+// draw11("myCanvas");
+
+// 五星红旗
+function create5star(context,sx,sy,radius,color,rotate){
+	context.save();
+	context.fillStyle = color;
+	context.translate(sx,sy);
+	context.rotate(Math.PI + rotate);
+	context.beginPath();
+	var x = Math.sin(0);
+	var y = Math.cos(0);
+	var dig = Math.PI / 5 *4;
+	for(var i=0;i<5;i++){
+		var x = Math.sin(i * dig);
+		var y = Math.cos(i * dig);
+		context.lineTo(x * radius,y*radius)
+	}
+	context.closePath();
+	context.stroke();
+	context.fill();
+	context.restore();
+}
+var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext("2d");
+var width = canvas.width;
+var height = width*2/3;
+
+var w = width/30;
+context.fillStyle = "red";
+context.fillRect(0,0,width,height);
+var maxR = 0.15, minR = 0.05;
+var maxX = 0.25, maxY = 0.25;
+var minX = [0.50,0.60,0.60,0.50];
+var minY = [0.10,0.20,0.35,0.45];
+
+var ox = height * maxX, oy = height *maxY;
+create5star(context,ox,oy,height*maxR,"#ff0",0);
+
+for(var idx = 0;idx<4; idx++){
+	var sx = minX[idx] *height, sy = minY[idx] *height;
+	var theta = Math.atan((oy - sy)/(ox - sx));
+	create5star(context,sx,sy,height*minR,"#ff0",-Math.PI/2+theta);
+}
+
+
+// 太极图
+function taiji(){
+	var canvas = document.getElementById("myCanvas");
+	var context = canvas.getContext("2d");
+
+	context.fillStyle = "yellow";
+	context.fillRect(0,0,400,300);
+
+	context.beginPath();
+	context.fillStyle = "white";
+	context.arc(200,100,80,1.5*Math.PI,0.5*Math.PI,false);
+	context.closePath();
+	context.fill();
+
+
+	context.beginPath();
+	context.fillStyle = "black";
+	context.arc(200,100,80,1.5*Math.PI,0.5*Math.PI,true);
+	context.closePath();
+	context.fill();
+
+	context.beginPath();
+	context.fillStyle = "white";
+	context.arc(200,140,40,0,Math.PI*2,false);
+	context.closePath();
+	context.fill();
+
+	context.beginPath();
+	context.fillStyle = "black";
+	context.arc(200,60,40,0,Math.PI*2,false);
+	context.closePath();
+	context.fill();
+
+	context.beginPath();
+	context.fillStyle = "white";
+	context.arc(200,60,10,0,Math.PI*2,false);
+	context.closePath();
+	context.fill();
+
+	context.beginPath();
+	context.fillStyle = "black";
+	context.arc(200,140,10,0,Math.PI*2,false);
+	context.closePath();
+	context.fill();
+}
+// taiji();
+
+function draw20(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null){
+		return false;
+	}
+	var context = canvas.getContext("2d");
+
+	var interal = setInterval(function (){
+		move(context);
+	},1);
+}
+// var x = 100;//矩形开始坐标
+// var y = 100;//矩形结束坐标
+// var mx = 0;//0右1左
+// var my = 0; //0下1上
+// var ml = 1;//每次移动长度
+// var w = 20;//矩形宽度
+// var h = 20;//矩形高度
+// var cw = 400;//canvas宽度
+// var ch = 300; //canvas高度
+
+// function move(context){
+// 	context.clearRect(0,0,400,300);
+// 	context.fillStyle = "#EEEEFF";
+// 	context.fillRect(0,0,400,300);
+// 	context.fillStyle = "red";
+// 	context.fillRect(x,y,w,h);
+
+// 	if(mx == 0){
+// 		x = x + ml;
+// 		if(x >= cw-w){
+// 			mx = 1;
+// 		}
+// 	}else{
+// 		x = x - ml;
+// 		if(x <= 0){
+// 			mx = 0;
+// 		}
+// 	}
+
+// 	if(my == 0){
+// 		y = y + ml;
+// 		if(y >= ch - w){
+// 			my = 1;
+// 		}
+// 	}else{
+// 		y = y - ml;
+// 		if(y <= 0){
+// 			my = 0;
+// 		}
+// 	}
+
+// }
+// draw20("myCanvas");
+
+
+function draw6(id){
+	var canvas = document.getElementById(id);
+	if(canvas == null) return false;
+	var context = canvas.getContext("2d");
+	context.fillStyle = "#EEEEFF";
+	context.fillRect(0,0,400,300);
+
+	context.translate(200, 50);
+	context.fillStyle = "rgba(255,0,0,0.25)";
+
+	for(var i =0; i <100; i++){
+		context.translate(25,25);
+		context.scale(0.95,0.95);
+		context.rotate(Math.PI / 10);
+		context.fillRect(0,0,10,50);
+	}
+}
+// draw6("myCanvas");
+</script>
+</body> 
+</html>

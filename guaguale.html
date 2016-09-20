@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+}
+.box {
+	width:320px;
+	height:410px;
+	background: url(http://www.7wanl.com/data/attachment/portal/201506/09/143243om7y7jwhymzea88e.jpg.thumb.jpg) no-repeat;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	position: relative;
+}
+#myCanvas {
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+</style>
+</head>
+<body>
+<div class="box">
+	<canvas id="myCanvas" width="336" height="410"></canvas>
+</div>
+<script type="text/javascript">
+var myCanvas = document.getElementById("myCanvas");
+var context = myCanvas.getContext("2d");
+var X = myCanvas.width;
+var Y = myCanvas.height;
+var oImg = new Image();
+oImg.src = "http://www.17sucai.com/preview/365006/2016-07-20/%E5%88%AE%E5%88%AE%E4%B9%90/img/gao4.jpeg";
+oImg.onload=function (){
+	context.beginPath();
+	context.drawImage(oImg,0,0,X,Y);
+	context.closePath();
+}
+var device = /android|iphone|ipad|ipod|webos|iemobile|opear mini|linux/i.test(navigator.userAgent.toLowerCase());
+var startEventName = device? "touchstart":"mousedown";
+var moveEventName = device? "touchmove":"mousemove";
+var endEventName = device? "touchend":"mouseup";
+
+function draw(event){
+	var x = device?event.touches[0].clientX:event.clientX;
+	var y = device?event.touches[0].clientY:event.clientY;
+
+	context.beginPath();
+	context.globalCompositeOperation = "destination-out";
+	context.arc(x,y,20,0,Math.PI*2,false);
+	context.fill();
+	context.closePath();
+}
+myCanvas.addEventListener(startEventName,function (){
+	myCanvas.addEventListener(moveEventName,draw,false);
+},false);
+myCanvas.addEventListener(endEventName,function (){
+	myCanvas.removeEventListener(moveEventName,draw,false);
+},false);
+</script>
+</body>
+</html>
