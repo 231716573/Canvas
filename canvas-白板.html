@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas鼠标划线</title>
+		<style>
+		body{ background:black;}
+		#my_canvas{ background:white;}
+		span{ color:white;}
+		#clearBtn{width:80px;height:40px;line-height:40px;display: block;text-align: center;color:#f00;background:blue}
+		</style>
+	</head>
+	<body>
+		<canvas id="my_canvas" width="300" height="400"></canvas>
+		<span id="clearBtn">清除画布</span>
+		<script>
+			window.onload=function(){
+				var oc=document.getElementById('my_canvas');
+				var oGc=oc.getContext('2d');
+				oc.onmousedown=function(ev){
+					var ev=ev||window.event;
+					oGc.beginPath();
+					oGc.moveTo(ev.clientX-oc.offsetLeft,ev.clientY-oc.offsetTop);
+					document.onmousemove=function(){
+						var ev=ev||window.event;
+						oGc.lineTo(ev.clientX-oc.offsetLeft,ev.clientY-oc.offsetTop);
+						oGc.stroke();
+					};
+					document.onmouseup = function(){
+						oGc.closePath();
+						document.onmousemove = null;
+						document.onmouseup = null;
+					};
+				}
+				document.getElementById('clearBtn').onclick=function(){
+					oGc.clearRect(0,0,oc.width,oc.height) 
+				}
+			}
+		</script>
+	</body>
+</html>
